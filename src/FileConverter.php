@@ -11,6 +11,14 @@
 
 namespace ABGEO\XmlToJson;
 
+use InvalidArgumentException;
+
+use function is_readable;
+use function fopen;
+use function simplexml_load_file;
+use function fwrite;
+use function fclose;
+
 /**
  * Convert XML file to JSON file.
  *
@@ -18,4 +26,33 @@ namespace ABGEO\XmlToJson;
  */
 class FileConverter extends AbstractConverter
 {
+    /**
+     * Convert XML file to JSON file.
+     *
+     * @param string $inputFile  Input XML file path.
+     * @param string $outputFile Output JSON file path.
+     * If null, filename will be {$inputFile}.json
+     */
+    public function convert(string $inputFile, ?string $outputFile = null)
+    {
+        $xmlNode      = null;
+        $outputHandle = null;
+
+        if (!$outputFile) {
+            $outputFile = "{$inputFile}.json";
+        }
+
+        if (!is_readable($inputFile)) {
+            throw new InvalidArgumentException("File '{$inputFile}' not found or is not readable!");
+        }
+
+        if (!$outputHandle = fopen($outputFile, 'w')) {
+            throw new InvalidArgumentException("Can not open '{$inputFile}' to write!");
+        }
+
+        $xmlNode = simplexml_load_file($inputFile);
+
+        fwrite($outputHandle, $this->xmlToJson($xmlNode));
+        fclose($outputHandle);
+    }
 }

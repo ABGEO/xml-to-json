@@ -92,6 +92,6 @@ abstract class AbstractConverter
      */
     protected function xmlToJson(SimpleXMLElement $xml): string
     {
-        return json_encode($this->xmlToArray($xml));
+        return json_encode($this->xmlToArray($xml), JSON_PRETTY_PRINT);
     }
 }
