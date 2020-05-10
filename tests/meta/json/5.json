@@ -1,0 +1,19 @@
+{
+    "data": {
+        "item1": {
+            "items": {
+                "item1.1": "Value 1.1",
+                "item1.2": "Value 1.2"
+            }
+        },
+        "item2": {
+            "items": {
+                "item2.1": [
+                    "Value 2.1.1",
+                    "Value 2.1.2",
+                    "Value 2.1.3"
+                ]
+            }
+        }
+    }
+}

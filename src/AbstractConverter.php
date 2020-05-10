@@ -53,27 +53,28 @@ abstract class AbstractConverter
             }
 
             if (($plainText = trim((string)$xml)) && !empty($attributes)) {
-                $attributes['#text'] = $plainText;
+                $attributes['-text'] = $plainText;
             }
 
             foreach ($xml->children($namespace) as $childXml) {
                 $childData = $this->xmlToArray($childXml);
                 $childTagName = array_keys($childData);
                 $childTagName = reset($childTagName);
+                $childProperties = $childData[$childTagName];
 
                 if ($prefix) {
                     $childTagName = "{$prefix}:{$childTagName}";
                 }
 
                 if (!isset($tags[$childTagName])) {
-                    $tags[$childTagName] = $childData[$childTagName];
+                    $tags[$childTagName] = $childProperties;
                 } elseif (
                     is_array($tags[$childTagName])
                     && range(0, count($tags[$childTagName]) - 1) === array_keys($tags[$childTagName])
                 ) {
-                    $tags[$childTagName][] = $childData[$childTagName];
+                    $tags[$childTagName][] = $childProperties;
                 } else {
-                    $tags[$childTagName] = [$tags[$childTagName], $childData[$childTagName]];
+                    $tags[$childTagName] = [$tags[$childTagName], $childProperties];
                 }
             }
         }

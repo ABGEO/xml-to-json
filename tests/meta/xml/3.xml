@@ -1,0 +1,4 @@
+<data>
+    <item1 attribute="attributeValue">Value 1</item1>
+    <item2 attribute1="attribute1Value" attribute2="attribute2Value">Value 2</item2>
+</data>

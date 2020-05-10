@@ -1,0 +1,13 @@
+{
+  "data": {
+    "item1": {
+      "-attribute": "attributeValue",
+      "-text": "Value 1"
+    },
+    "item2": {
+      "-attribute1": "attribute1Value",
+      "-attribute2": "attribute2Value",
+      "-text": "Value 2"
+    }
+  }
+}
