@@ -1,0 +1,38 @@
+{
+  "name": "abgeo/xml-to-json",
+  "description": "Simple way to convert XML to JSON",
+  "type": "library",
+  "keywords": [
+    "XML",
+    "JSON",
+    "Converter",
+    "XMLtoJSON"
+  ],
+  "homepage": "https://github.com/ABGEO/xml-to-json",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Temuri Takalandze",
+      "email": "takalandzet@gmail.com",
+      "homepage": "https://www.abgeo.dev",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "ABGEO\\XmlToJson\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ABGEO\\XmlToJson\\Test\\": "tests/"
+    }
+  }
+}

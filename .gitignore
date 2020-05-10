@@ -1,0 +1,7 @@
+.idea
+vendor
+composer.lock
+.php_cs.cache
+phpunit.xml
+coverage
+clover.xml
