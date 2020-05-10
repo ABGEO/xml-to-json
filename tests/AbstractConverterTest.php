@@ -12,7 +12,6 @@
 namespace ABGEO\XmlToJson\Test;
 
 use ABGEO\XmlToJson\AbstractConverter;
-use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 
 class AbstractConverterTest extends TestCase
@@ -21,9 +20,6 @@ class AbstractConverterTest extends TestCase
 
     public function setUp(): void
     {
-        $this->converter = $this->getMockForAbstractClass(AbstractConverter::class);
-        $this->converter = $this->getMockForAbstractClass(AbstractConverter::class);
-
         $this->converter = new class extends AbstractConverter {
             public function xmlToArrayPublic(SimpleXMLElement $xml)
             {
@@ -78,13 +74,5 @@ class AbstractConverterTest extends TestCase
         $excepted = json_decode($excepted, true);
 
         $this->assertEquals($excepted, $actual);
-    }
-
-    private function readXmlJsonPair(int $number): array
-    {
-        $xml = simplexml_load_file(__DIR__ . "/meta/xml/{$number}.xml");
-        $json = file_get_contents(__DIR__ . "/meta/json/{$number}.json");
-
-        return [$xml, $json];
     }
 }

@@ -5,3 +5,4 @@ composer.lock
 phpunit.xml
 coverage
 clover.xml
+.phpunit.result.cache
