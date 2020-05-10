@@ -11,6 +11,8 @@
 
 namespace ABGEO\XmlToJson;
 
+use function simplexml_load_string;
+
 /**
  * Convert XML string to JSON string.
  *
@@ -18,4 +20,17 @@ namespace ABGEO\XmlToJson;
  */
 class StringConverter extends AbstractConverter
 {
+    /**
+     * Convert XML string to JSON string.
+     *
+     * @param string $xmlContent XML Content.
+     *
+     * @return false|string Converted JSON or false on fail.
+     */
+    public function convert(string $xmlContent): string
+    {
+        $xmlNode = simplexml_load_string($xmlContent);
+
+        return $this->xmlToJson($xmlNode);
+    }
 }

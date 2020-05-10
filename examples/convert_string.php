@@ -9,4 +9,11 @@
  * file that was distributed with this source code.
  */
 
+use ABGEO\XmlToJson\StringConverter;
+
 require __DIR__ . '/../vendor/autoload.php';
+
+$converter = new StringConverter();
+$xmlContent = file_get_contents(__DIR__ . '/example.xml');
+
+echo $converter->convert($xmlContent);
