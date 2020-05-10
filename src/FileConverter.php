@@ -11,6 +11,7 @@
 
 namespace ABGEO\XmlToJson;
 
+use Exception;
 use InvalidArgumentException;
 
 use function is_readable;
@@ -46,7 +47,9 @@ class FileConverter extends AbstractConverter
             throw new InvalidArgumentException("File '{$inputFile}' not found or is not readable!");
         }
 
-        if (!$outputHandle = fopen($outputFile, 'w')) {
+        try {
+            $outputHandle = fopen($outputFile, 'w');
+        } catch (Exception $e) {
             throw new InvalidArgumentException("Can not open '{$inputFile}' to write!");
         }
 
